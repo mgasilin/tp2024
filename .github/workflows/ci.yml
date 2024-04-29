@@ -47,11 +47,10 @@ jobs:
         run: 
           mvn -f ./Test/pom.xml -B test
       - name: Echo positive result
-        uses: 
-          appleboy/telegram-action@master
-          dorny/test-reporter@v1
+      - uses: appleboy/telegram-action@master
+      - uses: dorny/test-reporter@v1
         if: success()
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          sessage: 'Все ок'
+          message: 'Все ок'
