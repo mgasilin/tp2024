@@ -10,12 +10,11 @@ import java.util.ArrayList;
 class ReaderTest {
     private final ArrayList<BigInteger> list = new ArrayList<>();
     private File_Reader test_reader;
-    private String t_path;
 
     @BeforeEach
     public void setup() {
         File tmp = new File("");
-        t_path = tmp.getAbsolutePath();
+        String t_path = tmp.getAbsolutePath();
         if (t_path.contains("\\")) {
             t_path += "\\src\\main\\java\\text.txt";
         } else {
@@ -109,6 +108,13 @@ class ReaderTest {
     @Test
     public void test_time() {
         long start = System.currentTimeMillis();
+        File tmp = new File("");
+        String t_path = tmp.getAbsolutePath();
+        if (t_path.contains("\\")) {
+            t_path += "\\src\\main\\java\\text.txt";
+        } else {
+            t_path += "/src/main/java/text.txt";
+        }
         try {
             test_reader = new File_Reader(t_path);
             test_reader._max();
