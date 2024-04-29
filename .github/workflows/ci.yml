@@ -21,7 +21,7 @@ jobs:
           java-version: ${{ matrix.java }}
 
       - name: Compile the Project
-        run: mvn -B compile
+        run: mvn -f ./Test/pow.xml -B compile
 
   build:
     runs-on: ubuntu-latest
@@ -39,4 +39,4 @@ jobs:
           cache: 'maven'
 
       - name: Build and test project
-        run: mvn -B test
+        run: mvn -f ./Test/pow.xml -B test
