@@ -61,7 +61,7 @@ class ReaderTest {
         Assertions.assertEquals(test_reader._mult(), new BigInteger("-2545200000000000000000000000509040000000000000000000000025452000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"));
     }
 
-    @Test
+    /*@Test
     public void test_time() {
         int n = 1000;
         File tmp = new File("");
@@ -97,6 +97,6 @@ class ReaderTest {
             long end = System.currentTimeMillis();
             System.out.println(end-start+" "+(n-1000));
         }
-    }
+    }*/
 
 }
