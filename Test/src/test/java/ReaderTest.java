@@ -14,7 +14,12 @@ class ReaderTest {
     @BeforeEach
     public void setup() {
         File tmp = new File("");
-        String t_path = tmp.getAbsolutePath() + "\\src\\main\\java\\text.txt";
+        String t_path = tmp.getAbsolutePath();
+        if (t_path.contains("\\")){
+            t_path+= "\\src\\main\\java\\text.txt";
+        }else{
+            t_path+="/src/main/java/text.txt";
+        }
         try {
             test_reader = new org.example.File_Reader(t_path);
         } catch (FileNotFoundException e) {
