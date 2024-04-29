@@ -1,8 +1,7 @@
-
+import model.File_Reader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.io.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -66,8 +65,8 @@ class ReaderTest {
         Assertions.assertEquals(test_reader._mult(), new BigInteger("-2545200000000000000000000000509040000000000000000000000025452000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"));
     }
 
-    /*@Test
-    public void test_time() {
+    /*
+    public void generate_time() {
         int n = 1000;
         File tmp = new File("");
         String t_path = tmp.getAbsolutePath() + "\\src\\main\\java\\time_test.txt";
@@ -93,7 +92,7 @@ class ReaderTest {
                 Assertions.fail();
             }
             try {
-                test_reader=new File_Reader(t_path);
+                test_reader=new model.File_Reader(t_path);
             } catch (FileNotFoundException e) {
                 Assertions.fail();
             }
@@ -105,7 +104,7 @@ class ReaderTest {
     }*/
 
 
-    /*@Test
+    @Test
     public void test_time() {
         long start = System.currentTimeMillis();
         File tmp = new File("");
@@ -124,5 +123,5 @@ class ReaderTest {
         }
         long end = System.currentTimeMillis();
         Assertions.assertTrue(end - start < 1000);
-    }*/
+    }
 }
