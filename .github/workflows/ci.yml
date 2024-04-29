@@ -39,4 +39,6 @@ jobs:
           cache: 'maven'
 
       - name: Test project
-        run: mvn -f ./Test/pom.xml -B test
+        run: 
+          mvn -f ./Test/pom.xml -B clear
+          mvn -f ./Test/pom.xml -B test
