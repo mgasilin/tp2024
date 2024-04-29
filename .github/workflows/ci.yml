@@ -17,6 +17,6 @@ jobs:
     - name: Build with Maven
       run: 
         mvn -f ./ts2/Test/pom.xml;
-        mvn —batch-mode —update-snapshots package ./ts2/Test;
+        mvn —batch-mode —update-snapshots package
     - name: Run tests
       run: mvn test
