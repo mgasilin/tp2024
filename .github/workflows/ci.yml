@@ -38,7 +38,10 @@ jobs:
           java-package: jdk
           cache: 'maven'
 
-      - name: Test project
+      - name: Clean project
         run: 
           mvn -f ./Test/pom.xml -B clean
+      
+      - name: Test project
+        run:
           mvn -f ./Test/pom.xml -B test
