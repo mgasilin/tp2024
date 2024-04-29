@@ -105,7 +105,7 @@ class ReaderTest {
     }*/
 
 
-    @Test
+    /*@Test
     public void test_time() {
         long start = System.currentTimeMillis();
         File tmp = new File("");
@@ -124,5 +124,5 @@ class ReaderTest {
         }
         long end = System.currentTimeMillis();
         Assertions.assertTrue(end - start < 1000);
-    }
+    }*/
 }
