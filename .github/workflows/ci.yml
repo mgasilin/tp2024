@@ -1,4 +1,4 @@
-name: Maven GitHub Actions Sample
+name: Java CI project
 
 on: [push]
 
@@ -10,7 +10,7 @@ jobs:
         java: [ 21 ]
     name: Java ${{ matrix.java }} compile
     steps:
-      - name: Checkout Source Code
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup Java
@@ -20,17 +20,17 @@ jobs:
           java-package: jdk
           java-version: ${{ matrix.java }}
 
-      - name: Compile the Project
+      - name: Compile
         run: mvn -f ./Test/pom.xml -B compile
 
   build:
     runs-on: ubuntu-latest
     needs: compile
-    name: Build the Maven Project
+    name: Build and test project
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up JDK 21
+      - name: Set JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'adopt'
@@ -38,5 +38,5 @@ jobs:
           java-package: jdk
           cache: 'maven'
 
-      - name: Build and test project
+      - name: Test project
         run: mvn -f ./Test/pom.xml -B test
