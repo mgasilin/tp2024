@@ -44,7 +44,14 @@ jobs:
       
       - name: Test project
         id: test
-        run: echo "test=$( mvn -f ./Test/pom.xml -B test )" >> $GITHUB_OUTPUT
-      - name: Echo results
-        run:
-          echo ${{ steps.test.outputs.test }}
+        run: 
+          mvn -f ./Test/pom.xml -B test
+      - name: Echo positive result
+        uses: 
+          appleboy/telegram-action@master
+          dorny/test-reporter@v1
+        if: success()
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          sessage: 'Все ок'
