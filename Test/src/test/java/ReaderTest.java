@@ -9,19 +9,20 @@ import java.util.ArrayList;
 
 class ReaderTest {
     private final ArrayList<BigInteger> list = new ArrayList<>();
-    private org.example.File_Reader test_reader;
+    private File_Reader test_reader;
+    private String t_path;
 
     @BeforeEach
     public void setup() {
         File tmp = new File("");
-        String t_path = tmp.getAbsolutePath();
-        if (t_path.contains("\\")){
-            t_path+= "\\src\\main\\java\\text.txt";
-        }else{
-            t_path+="/src/main/java/text.txt";
+        t_path = tmp.getAbsolutePath();
+        if (t_path.contains("\\")) {
+            t_path += "\\src\\main\\java\\text.txt";
+        } else {
+            t_path += "/src/main/java/text.txt";
         }
         try {
-            test_reader = new org.example.File_Reader(t_path);
+            test_reader = new File_Reader(t_path);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             Assertions.fail();
@@ -93,7 +94,7 @@ class ReaderTest {
                 Assertions.fail();
             }
             try {
-                test_reader=new org.example.File_Reader(t_path);
+                test_reader=new File_Reader(t_path);
             } catch (FileNotFoundException e) {
                 Assertions.fail();
             }
@@ -104,4 +105,18 @@ class ReaderTest {
         }
     }*/
 
+
+    @Test
+    public void test_time() {
+        long start = System.currentTimeMillis();
+        try {
+            test_reader = new File_Reader(t_path);
+            test_reader._max();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Assertions.fail();
+        }
+        long end = System.currentTimeMillis();
+        Assertions.assertTrue(end - start < 1000);
+    }
 }
