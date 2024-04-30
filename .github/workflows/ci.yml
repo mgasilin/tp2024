@@ -61,9 +61,9 @@ jobs:
     needs: build
     name: Send negative result if failed
     steps:
-      - env:
-          OUTPUT1: ${{needs.build.outputs.test}
       - name: send message
+        env: 
+          OUTPUT1: ${{needs.build.outputs.test}
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
