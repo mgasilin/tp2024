@@ -55,7 +55,8 @@ jobs:
           message: 'Все ок'
   filter_negative_result:
     runs-on: ubuntu-latest
-    needs: compile
+    if: always()
+    needs: build
     name: Send negative result if failed
     steps:
       - uses: actions/checkout@v3
