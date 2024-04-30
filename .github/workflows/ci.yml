@@ -51,7 +51,7 @@ jobs:
       
       - name: Report
         if: always()
-        run: echo $(mvn surefire-report:report)
+        run: echo $(mvn -f ./Test/pom.xml surefire-report:report)
       
       
   filter_negative_result:
