@@ -28,7 +28,7 @@ class ReaderTest {
         list.clear();
         list.add(new BigInteger("1"));
         list.add(new BigInteger("2"));
-        list.add(new BigInteger("4"));
+        list.add(new BigInteger("3"));
         list.add(new BigInteger("4"));
         list.add(new BigInteger("-1"));
         list.add(new BigInteger("3"));
