@@ -63,7 +63,7 @@ jobs:
     steps:
       - name: send message
         env: 
-          OUTPUT1: ${{needs.build.outputs.test}
+          OUTPUT1: ${{needs.build.outputs.test}}
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
