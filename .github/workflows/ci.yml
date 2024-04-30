@@ -55,14 +55,11 @@ jobs:
           message: 'Все ок'
   filter_negative_result:
     runs-on: ubuntu-latest
-    if: always()
+    if: failure()
     needs: build
     name: Send negative result if failed
     steps:
-      - uses: actions/checkout@v3
-      
       - name: send message
-        if: failure()
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
