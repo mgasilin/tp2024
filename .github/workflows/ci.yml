@@ -51,7 +51,7 @@ jobs:
       
       - name: Report
         if: always()
-        run: echo $(mvn -f ./Test/pom.xml surefire-report:report)
+        uses: scacap/action-surefire-report@v1
       
       
   filter_negative_result:
