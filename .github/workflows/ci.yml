@@ -43,10 +43,12 @@ jobs:
           mvn -f ./Test/pom.xml -B clean
       
       - name: Test project
-        id: test
-        run: |
-          mvn -f ./Test/pom.xml -B test
-          mvn -f ./Test/pom.xml surefire-report:report
+        run: mvn -f ./Test/pom.xml -B test
+      
+      - name: Create report
+        run: mvn -f ./Test/pom.xml surefire-report:report
+      
+      
       - name: Echo positive result
         if: success()
         uses: appleboy/telegram-action@master
