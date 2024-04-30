@@ -1,7 +1,8 @@
 name: Java CI project
 
 on: [push]
-
+permissions:
+    pull-requests: write
 jobs:
   compile:
     runs-on: ubuntu-latest
