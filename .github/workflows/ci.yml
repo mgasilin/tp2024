@@ -55,7 +55,7 @@ jobs:
       
       - name: Create report
         if: always()
-        run: mvn -f ./Test/pom.xml surefire-report:report
+        uses: scacap/action-surefire-report@v1
       
       
       
