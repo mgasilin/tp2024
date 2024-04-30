@@ -49,15 +49,17 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: 'Все ок'    
       
+      - name: Report
+        if: always()
+        run: echo $(mvn surefire-report:report)
+      
+      
   filter_negative_result:
     runs-on: ubuntu-latest
     if: failure()
     needs: build
     name: Send negative result if failed
     steps:
-      - name: get text
-        run: cat **/surefire-reports/TEST-*.xml
-    
       - name: send message
         uses: appleboy/telegram-action@master
         with:
