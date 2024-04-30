@@ -27,8 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: compile
     name: Build and test project
-    outputs:
-      output1: ${{steps.test.outputs.test}}
     steps:
       - uses: actions/checkout@v3
 
@@ -46,13 +44,7 @@ jobs:
       
       - name: Test project
         id: test
-        run: |
-          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "test<<$EOF" >> $GITHUB_OUTPUT
-          echo "$(mvn -f ./Test/pom.xml -B test )" >> "$GITHUB_OUTPUT"
-          echo "$EOF" >> "$GITHUB_OUTPUT"
-          mvn -f ./Test/pom.xml -B test
-
+        run: mvn -f ./Test/pom.xml -B test
           
       - name: Echo positive result
         if: success()
@@ -61,6 +53,13 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: 'Все ок'
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: always()    # run this step even if previous step failed
+        with:
+          name: JEST Tests            # Name of the check run which will be created
+          path: reports/jest-*.xml    # Path to test results
+          reporter: jest-junit        # Format of test results
   filter_negative_result:
     runs-on: ubuntu-latest
     if: failure()
@@ -72,4 +71,4 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{needs.build.outputs.test}}
+          message: сча разберемся
