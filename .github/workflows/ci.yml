@@ -37,10 +37,6 @@ jobs:
           java-version: '21'
           java-package: jdk
           cache: 'maven'
-
-      - name: Clean project
-        run: 
-          mvn -f ./Test/pom.xml -B clean
       
       - name: Test project
         run: mvn -f ./Test/pom.xml -B test
@@ -51,14 +47,7 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: 'Все ок'
-      
-      - name: Create report
-        if: always()
-        uses: scacap/action-surefire-report@v1
-      
-      
-      
+          message: 'Все ок'    
       
   filter_negative_result:
     runs-on: ubuntu-latest
@@ -66,9 +55,12 @@ jobs:
     needs: build
     name: Send negative result if failed
     steps:
+      - name: get text
+        run: cat **/surefire-reports/TEST-*.xml
+    
       - name: send message
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: сча разберемся
+          message: почти
