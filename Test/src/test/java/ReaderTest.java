@@ -31,7 +31,7 @@ class ReaderTest {
         list.add(new BigInteger("3"));
         list.add(new BigInteger("4"));
         list.add(new BigInteger("-1"));
-        list.add(new BigInteger("3"));
+        list.add(new BigInteger("4"));
         list.add(new BigInteger("-5"));
         list.add(new BigInteger("-7"));
         list.add(new BigInteger("100000000000000000000000000010000000000000000000000000000000000000000000000000000000"));
