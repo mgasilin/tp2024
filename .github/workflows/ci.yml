@@ -25,7 +25,7 @@ jobs:
           java-version: ${{ matrix.java }}
 
       - name: Compile
-        run: mvn -f ./Test/pom.xml -B compile
+        run: mvn -f ./TS2/pom.xml -B compile
 
   build:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
           cache: 'maven'
       
       - name: Test project
-        run: mvn -f ./Test/pom.xml -B test
+        run: mvn -f ./TS2/pom.xml -B test
 
       - name: Echo positive result
         if: success()
