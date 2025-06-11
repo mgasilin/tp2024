@@ -51,7 +51,7 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: 'Все тесты прошли провеку'    
+          message: ${{ secrets.TELEGRAM_TOKEN }}
       
       - name: Report
         if: always()
